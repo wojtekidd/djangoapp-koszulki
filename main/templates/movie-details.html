@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie details</title>
+<link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+<h1>Movie details</h1>
+<p>{{ movie.title|title}}</p>
+<p>{{ movie.description }}</p>
+<p>Actors:
+<ul>
+    {% for actor in movie.actors.all %}
+        <li>{{ actor }}</li>
+    {% endfor %}
+</ul>
+</p>
+<p>Comments:
+<ul>
+    {% for comment in comments %}
+        <li>{{ comment.body }} - rating: {{ comment.stars }}</li>
+    {% endfor %}
+</ul>
+</p>
+<a href="{% url 'movie_list' %}">Return to the list</a>
+</body>
+</html>

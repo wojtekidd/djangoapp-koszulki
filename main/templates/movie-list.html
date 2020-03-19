@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie list</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+<h1>Movie list</h1>
+
+{% if user.is_authenticated %}
+    <p>You're logged in. Hello {{ user.username }}! 👋</p>
+    <a href="{% url 'logout' %}">Log out</a>
+{% else %}
+        <p>You're NOT logged in</p>
+        <a href="{% url 'login' %}">Log in</a>
+{% endif %}
+
+<a href="{% url 'movie_add' %}">Add a new movie</a>
+<p> {% for movie in movies %}
+    <li>{{ movie.title|upper }}, {{ movie.year }}, <a href="/media/{{ movie.poster }}" target="_blank">poster</a>,
+        MPAA: {{ movie.get_mpaa_rating_display }}, <a href="{% url 'movie_edit' movie.id %}">Edit</a>,
+        <a href="{% url 'movie_del' movie.id %}">Delete</a>,
+        <a href="{% url 'movie_details' movie.id %}">Details</a></li>
+    <div>{{ movie.description }}</div>
+    {% endfor %}
+</ul>
+</body>
+</html>
