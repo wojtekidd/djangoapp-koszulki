@@ -4,7 +4,15 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Tshirt(models.Model):
-    Sizes = ('XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL')
+    Sizes = (
+        ('XXS', 'XXS'),
+        ('XS', 'XS'),
+        ('S', 'S'),
+        ('M', 'M'),
+        ('L', 'L'),
+        ('XL', 'XL'),
+        ('XXL', 'XXL'),
+    )
 
     brand = models.CharField(max_length=256, verbose_name='Brand name')
     design = models.CharField(max_length=256, verbose_name='Design name')
@@ -27,4 +35,4 @@ class Story(models.Model):
     stars = models.IntegerField(default=5,
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
-    tshirt = models.ForeignKey('T-shirt', on_delete=models.CASCADE)
+    tshirt = models.ForeignKey('Tshirt', on_delete=models.CASCADE)

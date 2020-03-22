@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main',
     'flat',
     'import_export',
+    'tshirts',
 ]
 
 MIDDLEWARE = [
