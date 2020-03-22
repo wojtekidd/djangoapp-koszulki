@@ -18,8 +18,9 @@ class Tshirt(models.Model):
     design = models.CharField(max_length=256, verbose_name='Design name')
     created = models.DateTimeField(auto_now_add=True, editable=False)
     size = models.CharField(choices=Sizes, max_length=3, default='M')
-    # image =
-    # video =
+    video = models.FileField(upload_to='videos/', default='')
+    image = models.ImageField(upload_to='pics/', default='')
+
 
 
     def __str__(self):
