@@ -18,7 +18,7 @@ class Tshirt(models.Model):
     design = models.CharField(max_length=256, verbose_name='Design name')
     created = models.DateTimeField(auto_now_add=True, editable=False)
     size = models.CharField(choices=Sizes, max_length=3, default='M')
-    video = models.FileField(upload_to='videos/', default='')
+    video = models.FileField(upload_to='videos/', default='', blank=True)
     image = models.ImageField(upload_to='pics/', default='')
 
 
@@ -37,3 +37,7 @@ class Story(models.Model):
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
     tshirt = models.ForeignKey('Tshirt', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Story'
+        verbose_name_plural = 'Stories'
