@@ -43,4 +43,4 @@ class Story(models.Model):
         verbose_name = 'Story'
         verbose_name_plural = 'Stories'
 
-# TODO: Add user in the model
+# TODO: Add user in the model -> https://docs.djangoproject.com/en/3.0/topics/auth/default/
