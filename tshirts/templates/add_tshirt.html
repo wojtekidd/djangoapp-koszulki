@@ -7,8 +7,8 @@
 <body>
 <h1>Add a T-shirt</h1>
 <form method="post" enctype="multipart/form-data">
-  {% raw %}{% csrf_token %}
-  {{ form.as_p }}{% endraw %}
+  {% csrf_token %}
+  {{ form.as_p }}
   <button type="submit">Add New T-shirt</button>
 </body>
 </html>

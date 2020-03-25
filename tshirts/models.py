@@ -21,6 +21,7 @@ class Tshirt(models.Model):
     video = models.FileField(upload_to='videos/', default='', blank=True)
     image = models.ImageField(upload_to='pics/', default='')
 
+# TODO: Add image and video size limits
 
 
     def __str__(self):
@@ -41,3 +42,5 @@ class Story(models.Model):
     class Meta:
         verbose_name = 'Story'
         verbose_name_plural = 'Stories'
+
+# TODO: Add user in the model
