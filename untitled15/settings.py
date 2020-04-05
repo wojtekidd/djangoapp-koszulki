@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
     'flat',
     'import_export',
     'tshirts',
@@ -128,7 +127,7 @@ MEDIA_URL = '/media/'
 # Authentication URLs
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'movie_list'
+LOGIN_REDIRECT_URL = ''
 LOGOUT_REDIRECT_URL = 'logout-done'
 
 import dj_database_url
