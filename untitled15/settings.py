@@ -25,7 +25,7 @@ SECRET_KEY = '_6!=ri6xw2-j)#6b7m85(j)$@fq6lwu5$8)3c0t3neiyp^pf_3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
 
 
 # Application definition
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'flat',
     'import_export',
     'tshirts',
 ]
@@ -127,7 +126,7 @@ MEDIA_URL = '/media/'
 # Authentication URLs
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'logout-done'
 
 import dj_database_url
