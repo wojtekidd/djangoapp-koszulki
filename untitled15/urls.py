@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('flat/', include('flat.urls')),
     path('tshirts/', include('tshirts.urls')),
+    path('tshirts/accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

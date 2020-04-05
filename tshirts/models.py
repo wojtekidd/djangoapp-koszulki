@@ -13,15 +13,14 @@ class Tshirt(models.Model):
         ('XL', 'XL'),
         ('XXL', 'XXL'),
     )
-
-    brand = models.CharField(max_length=256, verbose_name='Brand name')
-    design = models.CharField(max_length=256, verbose_name='Design name')
+    brand = models.CharField(max_length=256, verbose_name='Brand name', help_text='')
+    design = models.CharField(max_length=256, verbose_name='Design name', help_text='')
     created = models.DateTimeField(auto_now_add=True, editable=False)
     size = models.CharField(choices=Sizes, max_length=3, default='M')
-    video = models.FileField(upload_to='videos/', default='', blank=True)
-    image = models.ImageField(upload_to='pics/', default='')
+    video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
+    image = models.ImageField(upload_to='pics/', default='', help_text='')
 
-# TODO: Add image and video size limits
+# TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation?
 
 
     def __str__(self):
@@ -31,9 +30,11 @@ class Tshirt(models.Model):
     class Meta:
         verbose_name = 'T-shirt'
         verbose_name_plural = 'T-shirts'
+        '''ordering = ['title', '-pubdate']'''
+
 
 class Story(models.Model):
-    body = models.TextField(max_length=400)
+    body = models.TextField(max_length=400, help_text='')
     stars = models.IntegerField(default=5,
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
@@ -42,5 +43,4 @@ class Story(models.Model):
     class Meta:
         verbose_name = 'Story'
         verbose_name_plural = 'Stories'
-
-# TODO: Add user in the model -> https://docs.djangoproject.com/en/3.0/topics/auth/default/
+        '''ordering = ['title', '-pubdate']'''
