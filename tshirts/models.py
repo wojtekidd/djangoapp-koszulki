@@ -20,7 +20,7 @@ class Tshirt(models.Model):
     video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
     image = models.ImageField(upload_to='pics/', default='', help_text='')
 
-# TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation?
+# TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation? Brand has to become another Class!
 
 
     def __str__(self):

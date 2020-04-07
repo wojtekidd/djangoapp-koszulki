@@ -6,27 +6,10 @@
   <h2>Dynamic content</h2>
   <p>The Tshirt portal has the following record counts:</p>
   <ul>
-    <li><strong>Tshirts:</strong> </li>
-    <li><strong>Brands:</strong> </li>
+    <li><strong>Tshirts:</strong> {{ num_tshirts }} </li>
+    <li><strong>Brands:</strong> {{ num_brands }} </li>
     <li><strong>Stories:</strong> </li>
   </ul>
 {% endblock %}
 
 {#  TODO: Add a way to count the total number of Brands, Tshirts and Stories https://docs.djangoproject.com/en/3.0/topics/class-based-views/generic-display/ #}
-
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>All t-shirts</title>#}
-{#</head>#}
-{#<body>#}
-{#<h1>All t-shirts uploaded</h1>#}
-{#<ul>#}
-{#  {% for tshirt in object_list %}#}
-{#    <h2>{{ tshirt.design }} by {{ tshirt.brand }}</h2>#}
-{#    <img src="{{ tshirt.image.url}}" alt="{{ tshirt.design }}">#}
-{#  {% endfor %}#}
-{#</ul>#}
-{#</body>#}
-{#</html>#}
