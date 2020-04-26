@@ -25,7 +25,7 @@ SECRET_KEY = '_6!=ri6xw2-j)#6b7m85(j)$@fq6lwu5$8)3c0t3neiyp^pf_3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'djangoapp-koszulki.herokuapp.com']
 
 
 # Application definition
