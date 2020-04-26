@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'djangoapp-koszulki.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,5 +136,8 @@ LOGOUT_REDIRECT_URL = 'logout'
 import dj_database_url
 prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 django_heroku.settings(locals())
