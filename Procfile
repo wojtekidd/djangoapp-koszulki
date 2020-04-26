@@ -1,1 +1,1 @@
-web: gunicorn untitled15.wsgi
+web: gunicorn koszulki.wsgi
