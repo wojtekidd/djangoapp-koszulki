@@ -1,5 +1,5 @@
 """
-WSGI config for untitled15 project.
+WSGI config for koszulki project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'untitled15.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'koszulki.settings')
 
 application = get_wsgi_application()
