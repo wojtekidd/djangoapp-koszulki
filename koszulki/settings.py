@@ -129,9 +129,9 @@ MEDIA_URL = '/media/'
 
 # Authentication URLs
 
-LOGIN_URL = 'login'
+
 LOGIN_REDIRECT_URL = '/tshirts/'
-LOGOUT_REDIRECT_URL = 'logout'
+
 
 import dj_database_url
 prod_db = dj_database_url.config(conn_max_age=500)
