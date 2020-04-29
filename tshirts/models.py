@@ -44,3 +44,7 @@ class Story(models.Model):
         verbose_name = 'Story'
         verbose_name_plural = 'Stories'
         '''ordering = ['title', '-pubdate']'''
+
+    def __str__(self):
+        return f"Story of {self.tshirt}"
+
