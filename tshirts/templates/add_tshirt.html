@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add a T-shirt</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
+{#moved to main page#}
+{% block content %}
 <h1>Add a T-shirt</h1>
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Add New T-shirt</button>
-</body>
-</html>
+{% endblock %}

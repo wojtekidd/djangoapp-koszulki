@@ -130,7 +130,7 @@ MEDIA_URL = '/media/'
 # Authentication URLs
 
 
-LOGIN_REDIRECT_URL = '/tshirts/'
+LOGIN_REDIRECT_URL = '/'  # redirects to home page after login
 
 
 import dj_database_url
