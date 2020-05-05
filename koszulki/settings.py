@@ -131,6 +131,7 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_REDIRECT_URL = '/tshirts/'
+LOGIN_URL = 'login'
 
 
 import dj_database_url
