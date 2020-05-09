@@ -129,9 +129,8 @@ MEDIA_URL = '/media/'
 
 # Authentication URLs
 
-
 LOGIN_REDIRECT_URL = '/'  # redirects to home page after login
-
+LOGIN_URL = 'login'
 
 import dj_database_url
 prod_db = dj_database_url.config(conn_max_age=500)
