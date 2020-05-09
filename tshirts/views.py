@@ -1,8 +1,9 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from django.urls import reverse_lazy
+from django.shortcuts import render
 
 from .forms import TshirtForm
-from .models import Tshirt
+from .models import Tshirt, Story
 
 
 # Create your views here.
@@ -26,4 +27,39 @@ class CreateTshirtView(CreateView):
     success_url = reverse_lazy('index')
 
 
+class TshirtList(ListView):
+    model = Tshirt
+    template_name = 'tshirt_list.html'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['tshirts'] = Tshirt.objects.all()
+        return context
+
+
+class BrandsList(ListView):
+    model = Tshirt
+    template_name = 'brand_list.html'
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['brands'] = Tshirt.objects.all()
+        return context
+
+
+class StoryList(ListView):
+    model = Story
+    template_name = 'story_list.html'
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['stories'] = Story.objects.all()
+        return context
+
+
+class StoryDetail(DetailView):
+    model = Story
+    template_name = "story_detail.html"
+
+    def get_queryset(self):
+        return Story.objects
