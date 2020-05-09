@@ -1,10 +1,13 @@
 from django.views.generic import CreateView, ListView, DetailView
 from django.urls import reverse_lazy
+
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from django.template.loader import get_template
 from .forms import *
 from .models import Tshirt, Story
+
 
 
 
@@ -27,6 +30,19 @@ class CreateTshirtView(CreateView):
     form_class = TshirtForm
     template_name = 'add_tshirt.html'
     success_url = reverse_lazy('index')
+
+
+
+class SearchResultsView(ListView):
+    model = Tshirt
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Tshirt.objects.filter(
+            Q(design__icontains=query) | Q(brand__icontains=query)
+        )
+        return object_list
 
 
 class TshirtList(ListView):
@@ -99,5 +115,6 @@ def Contact(request):
         email.send()
 
         return redirect('index')
+
 
     return render(request, 'contact.html', {'form': Contact_Form})
