@@ -10,6 +10,10 @@
     <li><strong>Brands:</strong> {{ num_brands }} </li>
     <li><strong>Stories:</strong> {{ num_stories }}</li>
   </ul>
+  <h2>Search our T-shirt database</h2>
+    <form action="{% url 'search_results' %}" method="get">
+        <input name="q" type="text" placeholder="Search by design or brand name" size="25">
+    </form>
 {% endblock %}
 
 {#  TODO: Add a way to count the total number of Brands, Tshirts and Stories https://docs.djangoproject.com/en/3.0/topics/class-based-views/generic-display/ #}

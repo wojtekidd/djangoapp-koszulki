@@ -1,5 +1,6 @@
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 from .forms import TshirtForm
 from .models import Tshirt
@@ -29,5 +30,12 @@ class CreateTshirtView(CreateView):
 class SearchResultsView(ListView):
     model = Tshirt
     template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Tshirt.objects.filter(
+            Q(design__icontains=query) | Q(brand__icontains=query)
+        )
+        return object_list
 
 

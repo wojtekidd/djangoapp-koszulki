@@ -27,5 +27,4 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path("login/", auth_views.LoginView.as_view(), name='login'),
     path("logout/", auth_views.LogoutView.as_view(), name='logout'),
-    path('search/', SearchResultsView.as_view(), name='search_results'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
