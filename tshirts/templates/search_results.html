@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Tshirts search results</h1>
+  <p>Here are the search results:</p>
+    <ul>
+    {% for Tshirt in object_list %}
+        <li>
+        {{ Tshirt.design }}, by {{ Tshirt.brand }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

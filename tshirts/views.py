@@ -26,4 +26,8 @@ class CreateTshirtView(CreateView):
     success_url = reverse_lazy('index')
 
 
+class SearchResultsView(ListView):
+    model = Tshirt
+    template_name = 'search_results.html'
+
 
