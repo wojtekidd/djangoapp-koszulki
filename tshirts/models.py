@@ -1,9 +1,12 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.conf import settings
 
+User = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class Tshirt(models.Model):
+    user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
     Sizes = (
         ('XXS', 'XXS'),
         ('XS', 'XS'),
