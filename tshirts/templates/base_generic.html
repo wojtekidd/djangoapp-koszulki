@@ -21,6 +21,7 @@
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="">All Tshirts</a></li>
+          <li><a href="{% url 'add_tshirt' %}">Add T-shirt</a></li>
           <li><a href="">All Brands</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'profile' %}">Profile</a></li>

@@ -21,8 +21,9 @@ from users import views as user_views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path('', include('tshirts.urls')),  # this will load tshirts page without tshirts/ path
     path('admin/', admin.site.urls),
-    path('tshirts/', include('tshirts.urls')),
+    path('register/', user_views.register, name='register' ),
     path('accounts/', include('django.contrib.auth.urls')),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
