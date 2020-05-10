@@ -5,6 +5,7 @@
     <h2>T-shirt number: {{ tshirt.id }}</h2>
     <body>
     <a>{{ tshirt.brand }}</a>
+    {# requires integrating models of tshirt and story (possibly creating brand model) #}
 
     {% if story.id == tshirt.id %}
         <a>{{ story.body }}</a>
