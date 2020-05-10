@@ -1,0 +1,14 @@
+{% extends "tshirt_list.html" %}
+
+
+{% block content %}
+    <h2>T-shirt number: {{ tshirt.id }}</h2>
+    <body>
+    <a>{{ tshirt.brand }}</a>
+
+    {% if story.id == tshirt.id %}
+        <a>{{ story.body }}</a>
+    {% endif %}
+
+    </body>
+{% endblock %}
