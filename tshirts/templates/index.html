@@ -1,6 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+    <article class="media content-section">
+          <div class="media-body">
+        <div class="article-metadata">
   <h1>👕 T-shirts portal</h1>
   <p>Welcome to the T-shirts portal homepage!</p>
   <h2>💪 Dynamic content</h2>
@@ -15,8 +18,9 @@
         <input id="searchbox" name="q" type="text" placeholder="Search by design or brand name" size="25">
     <button type="submit" class="btn btn-primary">Search</button>
     </form>
-
-
+        </div>
+          </div>
+    </article>
 {% endblock %}
 
 {#  TODO: Add a way to count the total number of Brands, Tshirts and Stories https://docs.djangoproject.com/en/3.0/topics/class-based-views/generic-display/ #}
