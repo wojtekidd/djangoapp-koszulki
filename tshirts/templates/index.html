@@ -1,6 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+    <article class="media content-section">
+          <div class="media-body">
+        <div class="article-metadata">
   <h1>Tshirts homepage</h1>
   <p>Welcome to the Tshirts homepage!</p>
   <h2>Dynamic content</h2>
@@ -10,6 +13,9 @@
     <li><strong>Brands:</strong> {{ num_brands }} </li>
     <li><strong>Stories:</strong> </li>
   </ul>
+        </div>
+          </div>
+    </article>
 {% endblock %}
 
 {#  TODO: Add a way to count the total number of Brands, Tshirts and Stories https://docs.djangoproject.com/en/3.0/topics/class-based-views/generic-display/ #}
