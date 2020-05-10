@@ -24,7 +24,7 @@ class Tshirt(models.Model):
     size = models.CharField(choices=Sizes, max_length=3, default='M')
     video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
     image = models.ImageField(upload_to='pics/', default='', help_text='')
-    story = models.ForeignKey('Story', to_field='body', related_name='+', on_delete=models.CASCADE, null=True)
+    story = models.ManyToManyField('Story', related_name='+')
 
 # TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation? Brand has to become another Class!
 
@@ -44,7 +44,7 @@ class Story(models.Model):
     stars = models.IntegerField(default=5,
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
-    tshirt = models.ForeignKey('Tshirt', related_name='+',on_delete=models.CASCADE)
+    tshirt = models.ForeignKey('Tshirt', related_name='+', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Story'
