@@ -19,6 +19,7 @@ class Tshirt(models.Model):
     size = models.CharField(choices=Sizes, max_length=3, default='M')
     video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
     image = models.ImageField(upload_to='pics/', default='', help_text='')
+    story = Story.body
 
 # TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation? Brand has to become another Class!
 
@@ -34,7 +35,7 @@ class Tshirt(models.Model):
 
 
 class Story(models.Model):
-    body = models.TextField(max_length=400, help_text='')
+    body = models.TextField(max_length=400, blank=True, help_text='Add a story connected with the T-shirt')
     stars = models.IntegerField(default=5,
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
