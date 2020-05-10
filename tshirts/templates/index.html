@@ -4,15 +4,20 @@
     <article class="media content-section">
           <div class="media-body">
         <div class="article-metadata">
-  <h1>Tshirts homepage</h1>
-  <p>Welcome to the Tshirts homepage!</p>
-  <h2>Dynamic content</h2>
-  <p>The Tshirt portal has the following record counts:</p>
+  <h1>👕 T-shirts portal</h1>
+  <p>Welcome to the T-shirts portal homepage!</p>
+  <h2>💪 Dynamic content</h2>
+  <p>The T-shirt portal has the following record counts:</p>
   <ul>
-    <li><strong>Tshirts:</strong> {{ num_tshirts }} </li>
+    <li><strong>T-shirts:</strong> {{ num_tshirts }} </li>
     <li><strong>Brands:</strong> {{ num_brands }} </li>
-    <li><strong>Stories:</strong> </li>
+    <li><strong>Stories:</strong> {{ num_stories }}</li>
   </ul>
+  <h2>🕵️‍♀️ Search our T-shirt database</h2>
+    <form id="searchform" action="{% url 'search_results' %}" method="get" accept-charset="utf-8">
+        <input id="searchbox" name="q" type="text" placeholder="Search by design or brand name" size="25">
+    <button type="submit" class="btn btn-primary">Search</button>
+    </form>
         </div>
           </div>
     </article>

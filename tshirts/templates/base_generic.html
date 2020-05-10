@@ -14,11 +14,9 @@
         <link rel="stylesheet" type="text/css" href="{% static 'django_app/main.css'%}">
 
 
-    {% block title %}<title>T-shirts Portal</title>{% endblock %}
-
+    {% block title %}<title>T-shirts portal</title>{% endblock %}
 </head>
 <body>
-
 
 <!--Navigation bar-->
 <header class="site-header">
@@ -31,12 +29,10 @@
       <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav mr-auto">
           <a class="nav-item nav-link" href="{% url 'tshirt_list' %}">All T-shirts</a>
-          <a class="nav-item nav-link" href="{% url 'add_tshirt' %}">Add T-shirt</a>
-            <a class="nav-item nav-link" href="{% url 'brand_list' %}">All Brands</a>
-            <a class="nav-item nav-link" href="{% url 'story_list' %}">Our Stories</a>
+          <a class="nav-item nav-link" href="{% url 'add_tshirt' %}">Add a T-shirt</a>
+            <a class="nav-item nav-link" href="{% url 'brand_list' %}">All brands</a>
+            <a class="nav-item nav-link" href="{% url 'story_list' %}">All stories</a>
         </div>
-
-
 
                   <!-- Navbar Right Side -->
         <div class="navbar-nav">
@@ -58,12 +54,15 @@
     <div class="col-md-8">
         {% if messages %}
             {% for message in messages %}
+
                 <div class="alert alert-{{ message.tags }}">
-                {{ message }}
+                    {{ message }}
                 </div>
             {% endfor %}
         {% endif %}
-      {% block content %}{% endblock %}
+      {% block content %}
+      {% endblock %}
+
     </div>
   </div>
 </main>
