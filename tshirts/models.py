@@ -1,9 +1,14 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.conf import settings
 
+
+User = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class Tshirt(models.Model):
+
+    user = models.ManyToManyField(User, default=1)
     Sizes = (
         ('XXS', 'XXS'),
         ('XS', 'XS'),
@@ -19,7 +24,7 @@ class Tshirt(models.Model):
     size = models.CharField(choices=Sizes, max_length=3, default='M')
     video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
     image = models.ImageField(upload_to='pics/', default='', help_text='')
-    story = Story.body
+    story = models.ForeignKey('Story', to_field='body', related_name='+', on_delete=models.CASCADE, null=True)
 
 # TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation? Brand has to become another Class!
 
@@ -35,11 +40,11 @@ class Tshirt(models.Model):
 
 
 class Story(models.Model):
-    body = models.TextField(max_length=400, blank=True, help_text='Add a story connected with the T-shirt')
+    body = models.TextField(max_length=400, blank=True, help_text='Add a story connected with the T-shirt', unique=True)
     stars = models.IntegerField(default=5,
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
-    tshirt = models.ForeignKey('Tshirt', on_delete=models.CASCADE)
+    tshirt = models.ForeignKey('Tshirt', related_name='+',on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Story'
