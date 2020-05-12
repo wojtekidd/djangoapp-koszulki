@@ -9,10 +9,6 @@ from .forms import *
 from .models import Tshirt, Story
 
 
-
-
-# Create your views here.
-
 class HomePageView(ListView):
     model = Tshirt
     template_name = 'index.html'
@@ -48,6 +44,7 @@ class SearchResultsView(ListView):
 class TshirtList(ListView):
     model = Tshirt
     template_name = 'tshirt_list.html'
+    ordering = ['-created']
 
     def get_context_data(self):
         context = super().get_context_data()
