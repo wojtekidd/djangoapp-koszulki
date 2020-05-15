@@ -34,11 +34,11 @@ class Tshirt(models.Model):
 
 
 class Story(models.Model):
-    body = models.TextField(max_length=400, help_text='')
+    story = models.TextField(max_length=400, help_text='')  # changed atr name to story
     stars = models.IntegerField(default=5,
                                     validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
-    tshirt = models.ForeignKey('Tshirt', on_delete=models.CASCADE)
+    tshirt = models.ForeignKey(Tshirt, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Story'

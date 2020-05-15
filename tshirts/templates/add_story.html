@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Add Story</h1>
+<form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }} {#  will render items wrapped in <p> tags #}
+        <button type="submit">Add a story</button>
+{% endblock %}
+
