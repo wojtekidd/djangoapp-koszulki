@@ -45,6 +45,7 @@ class TshirtList(ListView):
     model = Tshirt
     template_name = 'tshirt_list.html'
     ordering = ['-created']
+    paginate_by = 5
 
     def get_context_data(self):
         context = super().get_context_data()
