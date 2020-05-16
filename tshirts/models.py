@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class Tshirt(models.Model):
@@ -19,7 +19,7 @@ class Tshirt(models.Model):
     size = models.CharField(choices=Sizes, max_length=3, default='M')
     video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
     image = models.ImageField(upload_to='pics/', default='', help_text='')
-
+    tags = TaggableManager()
 # TODO: Add image and video size limits, add tags, colors, supplier class, ForeignKey relation? Brand has to become another Class!
 
 
