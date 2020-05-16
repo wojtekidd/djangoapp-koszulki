@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, DetailView, TemplateView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView, UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -10,6 +10,7 @@ from .forms import *
 from .models import Tshirt, Story
 
 # Create your views here.
+
 
 class HomePageView(ListView):
     model = Tshirt
@@ -62,6 +63,8 @@ class TshirtList(ListView):
     """
     model = Tshirt
     template_name = 'tshirt_list.html'
+    ordering = ['-created']
+    paginate_by = 5
 
     def get_context_data(self):
         context = super().get_context_data()
