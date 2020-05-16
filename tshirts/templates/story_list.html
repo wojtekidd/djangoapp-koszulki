@@ -5,7 +5,7 @@
     <h1>All stories</h1>
     <ul>
         {% for story in object_list %}
-            <li> <a href="story_detail/{{ story.id }}">{{ story }}</a></li>
+            <li> <a href="../story_detail/{{ story.id }}">{{ story }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
