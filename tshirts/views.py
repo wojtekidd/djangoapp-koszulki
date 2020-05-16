@@ -1,10 +1,12 @@
 from django.views.generic import CreateView, ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.http import HttpResponse
-
-from .forms import TshirtForm, StoryForm
+from django.db.models import Q
+from django.core.mail import EmailMessage
+from django.template.loader import get_template
+from .forms import *
 from .models import Tshirt, Story
 
 # Create your views here.
@@ -23,6 +25,18 @@ class HomePageView(ListView):
         # this line below counts the number of existing stories
         context['num_stories'] = Story.objects.all().count()
         return context
+
+
+class SearchResultsView(ListView):
+    model = Tshirt
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Tshirt.objects.filter(
+            Q(design__icontains=query) | Q(brand__icontains=query)
+        )
+        return object_list
 
 
 class CreateTshirtView(CreateView):
@@ -115,3 +129,39 @@ class StoryDetail(DetailView):
 
     def get_queryset(self):
         return Story.objects
+
+"""Contact form-view"""
+def Contact(request):
+    Contact_Form = ContactForm
+    if request.method == 'POST':
+        form = Contact_Form(data=request.POST)
+
+        if form.is_valid():
+            contact_name = request.POST.get('contact_name')
+            contact_email = request.POST.get('contact_email')
+            contact_content = request.POST.get('content')
+
+        template = get_template('contact_form.txt')
+
+        content = {
+            'contact_name': contact_name,
+            'contact_email': contact_email,
+            'contact_content': contact_content
+        }
+
+        content = template.render(content)
+
+        email = EmailMessage(
+            "New contact form",
+            content,
+            "KoszulkiApp" + '',
+            ['koszulkistore@gmail.com'],
+            headers= {'Reply to': contact_email}
+        )
+
+        email.send()
+
+        return redirect('index')
+
+
+    return render(request, 'contact.html', {'form': Contact_Form})
