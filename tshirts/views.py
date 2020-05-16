@@ -1,4 +1,5 @@
 from django.views.generic import CreateView, ListView, DetailView, TemplateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -40,14 +41,14 @@ class SearchResultsView(ListView):
         return object_list
 
 
-class CreateTshirtView(CreateView):
+class CreateTshirtView(LoginRequiredMixin, CreateView):
     model = Tshirt
     form_class = TshirtForm
     template_name = 'add_tshirt.html'
     success_url = reverse_lazy('index')
 
 
-class CreateStoryView(CreateView):
+class CreateStoryView(LoginRequiredMixin, CreateView):
     """
     a sepearate view for adding story
     """
