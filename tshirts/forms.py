@@ -6,7 +6,7 @@ class TshirtForm(forms.ModelForm):
 
     class Meta:
         model = Tshirt
-        fields = ['brand', 'tags', 'design', 'size', 'video', 'image']
+        fields = ['brand', 'tags', 'design', 'size', 'video', 'image', 'story_set']
 
 
 class StoryForm(forms.ModelForm):
