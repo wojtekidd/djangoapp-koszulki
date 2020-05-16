@@ -6,7 +6,7 @@
     <ul>
         {% for tshirt in object_list %}
             {# a list of links and images associated with the tshirt will display #}
-            <li><a href="tshirt_detail/{{ tshirt.id }}">{{tshirt.brand}} - {{ tshirt.design }}</a>
+            <li><a href="../tshirt_detail/{{ tshirt.id }}">{{tshirt.brand}} - {{ tshirt.design }}</a>
                 <img src="{{ MEDIA_URL }}/media/{{ tshirt.image }}" height="42" width="42">
             </li>
 
