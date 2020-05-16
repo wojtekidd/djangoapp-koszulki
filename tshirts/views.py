@@ -1,5 +1,6 @@
-from django.views.generic import CreateView, ListView, DetailView, TemplateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, ListView, DetailView, TemplateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -47,8 +48,35 @@ class CreateTshirtView(LoginRequiredMixin, CreateView):
     template_name = 'add_tshirt.html'
     success_url = reverse_lazy('index')
 
+    
+class UpdateTshirtView(UpdateView):
+    model = Tshirt
+    form_class = TshirtForm
+    template_name = 'add_tshirt.html'
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        tshirt = self.get_object()
+        if self.request.user == tshirt.author:
+            return True
+        return False
+
+class DeleteTshirtView(DeleteView):
+    model = Tshirt
+    success_url = reverse_lazy('index')
+
+    def test_func(self):
+        tshirt = self.get_object()
+        if self.request.user == tshirt.author:
+            return True
+        return False
 
 class CreateStoryView(LoginRequiredMixin, CreateView):
+
     """
     a sepearate view for adding story
     """
@@ -104,6 +132,7 @@ class TshirtDetail(TemplateView):
 class BrandsList(ListView):
     model = Tshirt
     template_name = 'brand_list.html'
+    ordering = ['-created']
 
     def get_context_data(self):
         context = super().get_context_data()

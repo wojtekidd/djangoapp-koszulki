@@ -1,6 +1,5 @@
 {% extends "tshirt_list.html" %}
 
-
 {% block content %}
 <h2>T-shirt number: {{ pk }} {{ tshirt }}</h2> {# this will display tshirts number #}
 <body>
@@ -21,7 +20,11 @@
     {% endfor %}
 </a>
 <br>
-<img src="{{ MEDIA_URL }}/media/{{ tshirt.image }}" height="480" width=auto>
+<img src="{{ MEDIA_URL }}/media/{{ tshirt.image }}">
+                <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update_tshirt' tshirt.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete_tshirt' tshirt.id %}">Delete</a>
+                </div>
 {% endif %}
 {% endfor %}
 {# requires integrating models of tshirt and story (possibly creating brand model) #}
@@ -35,3 +38,4 @@
 
 </body>
 {% endblock %}
+
