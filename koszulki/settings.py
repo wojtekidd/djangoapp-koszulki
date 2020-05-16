@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'import_export',
     'tshirts',
-    'cloudinary_storage',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
