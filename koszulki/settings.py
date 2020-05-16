@@ -151,11 +151,3 @@ EMAIL_USE_SSL = False
 EMAIL_PORT: 587
 EMAIL_HOST_USER = os.environ.get('KOSZULKI_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('KOSZULKI_EMAIL_HOST_PASSWORD')
-
-#Cloudinary file storage on Heroku
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hftxmiail',
-    'API_KEY': '224381973369121',
-    'API_SECRET': 'LBEmaGVdrU5KX19tDZX2aRoryy4',
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
