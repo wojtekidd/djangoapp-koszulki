@@ -2,29 +2,36 @@
 
 
 {% block content %}
-    <h2>T-shirt number: {{ pk }} {{ tshirt }}</h2> {# this will display tshirts number #}
-    <body>
-{#    <a>{{ tshirt.brand }}</a>#}
-    {% for tshirt in tshirts  %} {# here we actually have accessed all items in tshirt model #}
-        {% if tshirt.id == pk %} {# but we limit them to the fitting pk #}
-        <a>Design: {{ tshirt.design }}</a> {# we'll display selected tshirts design #}
-            <br>
-        <a>Brand: {{ tshirt.brand }}</a>
-            <br>
-        <a>Created: {{ tshirt.created }}</a>
-            <br>
-        <a>Size: {{ tshirt.size }}</a>
-            <br>
-        <img src="{{ MEDIA_URL }}/media/{{ tshirt.image }}">
-        {% endif %}
+<h2>T-shirt number: {{ pk }} {{ tshirt }}</h2> {# this will display tshirts number #}
+<body>
+{# <a>{{ tshirt.brand }}</a>#}
+{% for tshirt in tshirts %} {# here we actually have accessed all items in tshirt model #}
+{% if tshirt.id == pk %} {# but we limit them to the fitting pk #}
+<a>Design: {{ tshirt.design }}</a> {# we'll display selected tshirts design #}
+<br>
+<a>Brand: {{ tshirt.brand }}</a>
+<br>
+<a>Created: {{ tshirt.created }}</a>
+<br>
+<a>Size: {{ tshirt.size }}</a>
+<br>
+<a>Tags:
+    {% for tag in tshirt.tags.all %}
+    <li>{{ tag }}</li>
     {% endfor %}
-    {# requires integrating models of tshirt and story (possibly creating brand model) #}
-    <h3>All stories related to this tshirt: </h3>
-    {% for story in stories %}
-        {% if story.tshirt_id == pk %} {# this line is so that we recieve all stories related to a specific thsirt #}
-        <ul>{{ story.story }}</ul> {# story content #}
-        {% endif %}
-    {% endfor %}
+</a>
+<br>
+<img src="{{ MEDIA_URL }}/media/{{ tshirt.image }}">
+{% endif %}
+{% endfor %}
+{# requires integrating models of tshirt and story (possibly creating brand model) #}
+<h3>All stories related to this tshirt: </h3>
+{% for story in stories %}
+{% if story.tshirt_id == pk %} {# this line is so that we recieve all stories related to a specific thsirt #}
+<ul>{{ story.story }}</ul>
+{# story content #}
+{% endif %}
+{% endfor %}
 
-    </body>
+</body>
 {% endblock %}
