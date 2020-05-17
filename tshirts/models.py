@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-
+from .storages import PublicStorage
 
 # Create your models here.
 class Tshirt(models.Model):
@@ -20,8 +20,8 @@ class Tshirt(models.Model):
     design = models.CharField(max_length=256, verbose_name='Design name', help_text='')
     created = models.DateTimeField(auto_now_add=True, editable=False)
     size = models.CharField(choices=Sizes, max_length=3, default='M')
-    video = models.FileField(upload_to='videos/', default='', blank=True, help_text='')
-    image = models.ImageField(upload_to='pics/', default='', help_text='')
+    video = models.FileField(upload_to='videos/', default='', blank=True, help_text='', storage=PublicStorage())
+    image = models.ImageField(upload_to='pics/', default='', help_text='', storage=PublicStorage())
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 

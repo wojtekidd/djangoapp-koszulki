@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'koszulki.urls'
 
 TEMPLATES = [
@@ -128,6 +129,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = 'yourapp.storages.PublicStorage'
+
 # Authentication URLs
 
 LOGIN_REDIRECT_URL = '/'  # redirects to home page after login
@@ -150,3 +153,20 @@ EMAIL_USE_SSL = False
 EMAIL_PORT: 587
 EMAIL_HOST_USER = os.environ.get('KOSZULKI_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('KOSZULKI_EMAIL_HOST_PASSWORD')
+
+# =============================================================================
+# Cloudcube storage
+# =============================================================================
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# example cloudcube url: https://cloud-cube.s3.amazonaws.com/bucketname
+cloudcube_url = os.environ.get('CLOUDCUBE_URL')
+cloudcube_bucket = os.path.basename(cloudcube_url)   # "bucketname"
+cloudcube_base_url = os.path.dirname(cloudcube_url)  # "https://cloud-cube.s3.amazonaws.com/"
+
+AWS_S3_ENDPOINT_URL = cloudcube_base_url
+AWS_ACCESS_KEY_ID = os.environ.get('CLOUDCUBE_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('CLOUDCUBE_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = cloudcube_bucket
+AWS_DEFAULT_ACL = os.environ.get('AWS_DEFAULT_ACL', 'public-read)
+AWS_QUERYSTRING_AUTH = False
